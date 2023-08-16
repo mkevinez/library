@@ -8,22 +8,34 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-    <form id="add-book-form" method="post">
-        <label for="book-title">Book Title</label>
-        <input type="text" name="book-title" id="book-title-input">
+    <header>
+        <h1>Library</h1>
+        <button id="show-form-button">Add Book</button>
+    </header>
 
-        <label for="author">Author</label>
-        <input type="text" name="author" id="author-input">
+    <main>
 
-        <label for="total-pages">Number of Pages</label>
-        <input type="number" name="total-pages" id="total-pages-input">
+    </main>
 
-        <label for="marked-read">Mark Read</label>
-        <input type="checkbox" name="marked-read" id="mark-read-input">
-
-        <button id="submit-button"" type="button">Add Book</button>
-
-    </form>
+    <dialog id="add-book-modal">
+        <form id="add-book-form" method="post">
+            <label for="book-title">Book Title</label>
+            <input type="text" name="book-title" id="book-title-input">
+    
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author-input">
+    
+            <label for="total-pages">Number of Pages</label>
+            <input type="number" name="total-pages" id="total-pages-input">
+    
+            <label for="marked-read">Mark Read</label>
+            <input type="checkbox" name="marked-read" id="mark-read-input">
+    
+            <button id="submit-button"" type="button">Add Book</button>
+    
+        </form>
+    </dialog>
+    
     
 </body>
 </html>

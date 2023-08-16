@@ -22,12 +22,21 @@ submitButton.addEventListener('click', (e) => {
 
     let book = createBook(bookTitle.value, bookAuthor.value, numberOfPages.value, markedRead.checked);
     addBookToLibrary(book);
-    
+
     allInputs.forEach(singleInput => singleInput.value = '');
 
     console.log(myLibrary);
+
+    addBookModal.close();
 });
 
 function createBook(title, author, pages, markedRead) {
     return new Book(title, author, pages, markedRead);
 }
+
+let openFormButton = document.querySelector('#show-form-button');
+let addBookModal = document.querySelector('#add-book-modal');
+
+openFormButton.addEventListener('click', (e) => {
+    addBookModal.showModal()
+})
