@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIBRARY</title>
+    <title>Library</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </head>
 <body>
+    <form id="add-book-form" method="post">
+        <label for="book-title">Book Title</label>
+        <input type="text" name="book-title" id="book-title-input">
+
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author-input">
+
+        <label for="total-pages">Number of Pages</label>
+        <input type="number" name="total-pages" id="total-pages-input">
+
+        <label for="marked-read">Mark Read</label>
+        <input type="checkbox" name="marked-read" id="mark-read-input">
+
+        <button id="submit-button"" type="button">Add Book</button>
+
+    </form>
     
 </body>
 </html>
