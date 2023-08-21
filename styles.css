@@ -1,0 +1,123 @@
+:root {
+    font-family: 'Montserrat', sans-serif;
+    --main-color: #ea4e6b;
+    --secondary-color: #f1c6bc;
+    --action-color: #0d0d73;
+
+    --success-color: #8CBC1A;
+    --info-color: #2C9AF9;
+    --warning-color: #FFA928;
+    --danger-color: #FF6366;
+}
+
+body {
+    margin: 0;
+}
+
+/* Header Styling */
+
+header {
+    background-color: var(--main-color);
+    text-align: center;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+header h1 {
+    color: white;
+}
+
+/* Modal Styling  */
+
+#add-book-modal {
+    box-shadow: 0 5px 30px 0 rgb(0 0 0 / 10%);
+    border: 0;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+#add-book-form {
+    display: flex;
+    flex-direction: column;
+    width: 350px;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+#add-book-form :not(#mark-read-input) {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Input Styling */
+
+input {
+    background: #eeeeee;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+}
+
+input:focus-visible {
+    outline-color: var(--action-color);
+}
+
+
+/* Button Styling */
+
+button {
+    background-color: var(--action-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+/* Grid Styling */
+
+#books-container {
+    display: grid;
+    max-width: 1200px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 25px auto;
+}
+
+.book-grid-item {
+    background-color: #eeeeee;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+
+/* Card Styling */
+
+.author-container, .pages-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.author-container *, .pages-container * {
+    margin: 8px 0px;
+}
+
+.author-label, .pages-label, .read, .unread {
+    font-weight: 600;
+}
+
+.read {
+    color: var(--success-color);
+}
+
+.unread {
+    color: var(--danger-color);
+}
