@@ -110,7 +110,7 @@ button {
     margin: 8px 0px;
 }
 
-.author-label, .pages-label, .read, .unread {
+.label, .read, .unread {
     font-weight: 600;
 }
 

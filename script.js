@@ -5,6 +5,97 @@ function Book(title, author, pages, markedRead) {
     this.author = author;
     this.pages = pages;
     this.markedRead = markedRead;
+
+    this.bookCard = createCardElem();
+
+    function createCardElem() {
+        let cardElem = document.createElement('div');
+        cardElem.classList.add('book-grid-item');
+
+        cardElem.setAttribute('librarykey', myLibrary.length);
+        console.log(cardElem.getAttribute('librarykey'));
+
+        cardElem.appendChild(createTitleElem());
+        cardElem.appendChild(createAuthorElem());
+        cardElem.appendChild(createPagesElem());
+        cardElem.appendChild(createBookReadElem());
+        cardElem.appendChild(createReadButton());
+
+        return cardElem;
+
+    }
+
+    function createTitleElem() {
+        let cardTitle = document.createElement('h3');
+        cardTitle.textContent = title;
+
+        return cardTitle;
+    }
+
+    function createAuthorElem() {
+        let cardAuthorContainer = document.createElement('div');
+        cardAuthorContainer.classList.add('author-container');
+        
+        let cardAuthorLabel = document.createElement('p');
+        let cardAuthor = document.createElement('p');
+
+        cardAuthorLabel.classList.add('label');
+
+        cardAuthorLabel.textContent = 'Author';
+        cardAuthor.textContent = author;
+
+        cardAuthorContainer.appendChild(cardAuthorLabel);
+        cardAuthorContainer.appendChild(cardAuthor);
+
+        return cardAuthorContainer;
+    }
+
+    function createPagesElem() {
+        let cardPagesContainer = document.createElement('div');
+        cardPagesContainer.classList.add('pages-container');
+        
+        let cardPagesLabel = document.createElement('p');
+        let cardPages = document.createElement('p');
+
+        cardPagesLabel.classList.add('label');
+
+        cardPagesLabel.textContent = 'Pages';
+        cardPages.textContent = pages;
+
+        cardPagesContainer.appendChild(cardPagesLabel);
+        cardPagesContainer.appendChild(cardPages);
+
+        return cardPagesContainer;
+    }
+
+    function createBookReadElem() {
+        let bookRead = document.createElement('p');
+
+        if (markedRead) {
+            bookRead.textContent = 'Read';
+            bookRead.classList.add('read');
+        } else {
+            bookRead.textContent = 'Unread';
+            bookRead.classList.add('unread');
+        }
+
+        return bookRead;
+    }
+
+    function createReadButton() {
+        let markReadButton = document.createElement('button');
+
+        markReadButton.addEventListener('click', (e) => {
+            myLibrary.splice(markReadButton.parentElement.getAttribute('librarykey'),1);
+            resetBooksGrid();
+            loadLibrary();
+        })
+
+        return markReadButton;
+    }
+
+
+
 }
 
 // Declared HTML elements
@@ -19,6 +110,11 @@ const submitButton = document.querySelector('#submit-button');
 
 const exampleBook1 = new Book ('The Great Gatsby', 'F. Scott Fitzgerald', 180, true);
 myLibrary.push(exampleBook1);
+
+
+console.log(myLibrary[0]);
+
+
 
 // Event Listeners
 
@@ -54,54 +150,7 @@ function loadLibrary() {
     resetBooksGrid();
 
     myLibrary.forEach(book => {
-        const bookItem = document.createElement('div');
-        bookItem.classList.add('book-grid-item');
-
-        const titleValueElem = document.createElement('h3');
-        titleValueElem.textContent = book.title;
-
-        const authorContainerElem = document.createElement('div');
-        authorContainerElem.classList.add('author-container');
-
-        const authorLabelElem = document.createElement('p')
-        authorLabelElem.textContent = 'Author';
-        authorLabelElem.classList.add('author-label');
-        authorContainerElem.appendChild(authorLabelElem);
-
-        const authorValueElem = document.createElement('p')
-        authorValueElem.textContent = book.author;
-        authorContainerElem.appendChild(authorValueElem);
-
-        const pagesContainerElem = document.createElement('div');
-        pagesContainerElem.classList.add('pages-container');
-
-        const pagesLabelElem = document.createElement('p')
-        pagesLabelElem.textContent = 'Pages';
-        pagesLabelElem.classList.add('pages-label');
-        pagesContainerElem.appendChild(pagesLabelElem);
-
-        const pagesValueElem = document.createElement('p')
-        pagesValueElem.textContent = book.pages;
-        pagesContainerElem.appendChild(pagesValueElem);
-
-
-        const bookReadElem = document.createElement('p');
-
-
-        if (book.markedRead) {
-            bookReadElem.textContent = 'Read';
-            bookReadElem.classList.add('read');
-        } else {
-            bookReadElem.textContent = 'Unread';
-            bookReadElem.classList.add('unread');
-        }
-
-        bookItem.appendChild(titleValueElem);
-        bookItem.appendChild(authorContainerElem);
-        bookItem.appendChild(pagesContainerElem);
-        bookItem.appendChild(bookReadElem);
-
-        libraryContainer.appendChild(bookItem);
+        libraryContainer.appendChild(book.bookCard);
     })
 }
 
